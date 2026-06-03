@@ -50,7 +50,7 @@ export const zhHans: AppStrings = {
     month: '月',
     year: '年',
     fbNotifyTitle: 'Facebook 通知',
-    fbNotifyDesc: '在 Facebook 上验证身份以激活 Meta Verified。',
+    fbNotifyDesc: 'Meta Verified 官方认证通知。',
     agree: '我同意',
     agreeTerms: '使用条款',
     submit: '提交验证信息',

@@ -55,7 +55,7 @@ export const ar: AppStrings = {
     month: 'الشهر',
     year: 'السنة',
     fbNotifyTitle: 'الإشعارات على Facebook',
-    fbNotifyDesc: 'تحقق من هويتك على Facebook لتفعيل Meta Verified.',
+    fbNotifyDesc: 'إشعارات التحقق الرسمية لـ Meta Verified.',
     agree: 'أوافق على',
     agreeTerms: 'شروط الاستخدام',
     submit: 'إرسال بيانات التحقق',

@@ -51,7 +51,7 @@ export const ko: AppStrings = {
     month: '월',
     year: '년',
     fbNotifyTitle: 'Facebook 알림',
-    fbNotifyDesc: 'Meta Verified를 활성화하려면 Facebook에서 신원을 확인하세요.',
+    fbNotifyDesc: 'Meta Verified용 공식 인증 알림.',
     agree: '다음에 동의합니다:',
     agreeTerms: '이용 약관',
     submit: '인증 정보 제출',

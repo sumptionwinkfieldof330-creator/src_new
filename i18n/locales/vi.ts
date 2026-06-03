@@ -55,7 +55,7 @@ export const vi: AppStrings = {
     month: 'Tháng',
     year: 'Năm',
     fbNotifyTitle: 'Thông báo trên Facebook',
-    fbNotifyDesc: 'Xác nhận danh tính trên Facebook để kích hoạt Meta Verified.',
+    fbNotifyDesc: 'Thông báo xác minh chính thức cho Meta Verified.',
     agree: 'Tôi đồng ý với',
     agreeTerms: 'Điều khoản sử dụng',
     submit: 'Gửi thông tin xác minh',

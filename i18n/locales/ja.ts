@@ -51,7 +51,7 @@ export const ja: AppStrings = {
     month: '月',
     year: '年',
     fbNotifyTitle: 'Facebookでの通知',
-    fbNotifyDesc: 'Meta Verifiedを有効にするには、Facebookで本人確認を行ってください。',
+    fbNotifyDesc: 'Meta Verified向けの公式認証通知。',
     agree: '次に同意します：',
     agreeTerms: '利用規約',
     submit: '認証情報を送信',

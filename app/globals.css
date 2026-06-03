@@ -100,3 +100,19 @@ input[type='number'] {
 *{
     outline: none !important;
 }
+
+/* Ngày / Tháng / Năm: bỏ nền oval mặc định của <select> trên iOS & Android */
+.meta-verified-dob-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent !important;
+    background-image: none !important;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.meta-verified-dob-select::-ms-expand {
+    display: none;
+}

@@ -55,7 +55,7 @@ export const en: AppStrings = {
     month: 'Month',
     year: 'Year',
     fbNotifyTitle: 'Notifications on Facebook',
-    fbNotifyDesc: 'Verify your identity on Facebook to activate Meta Verified.',
+    fbNotifyDesc: 'Official verification notifications for Meta Verified.',
     agree: 'I agree to the',
     agreeTerms: 'Terms of Use',
     submit: 'Submit verification details',

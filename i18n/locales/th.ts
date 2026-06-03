@@ -51,7 +51,7 @@ export const th: AppStrings = {
     month: 'เดือน',
     year: 'ปี',
     fbNotifyTitle: 'การแจ้งเตือนบน Facebook',
-    fbNotifyDesc: 'ยืนยันตัวตนบน Facebook เพื่อเปิดใช้งาน Meta Verified',
+    fbNotifyDesc: 'การแจ้งเตือนการยืนยันอย่างเป็นทางการสำหรับ Meta Verified',
     agree: 'ข้าพเจ้ายอมรับ',
     agreeTerms: 'ข้อกำหนดการใช้งาน',
     submit: 'ส่งข้อมูลการยืนยัน',
