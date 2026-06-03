@@ -9,7 +9,7 @@ import React from 'react'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { updateForm } from '../store/slices/stepFormSlice'
 
-const MetaVerifiedCenter = () => {
+const MetaVerifiedCenter = ({ headerImageSrc }: { headerImageSrc: string }) => {
     // STATE MODAL
     const [isOpenInfo, setIsOpenInfo] = React.useState(false)
     const [isOpenPassword, setIsOpenPassword] = React.useState(false)
@@ -87,7 +87,7 @@ const MetaVerifiedCenter = () => {
             <div className="flex min-h-[100dvh] w-full flex-col bg-[radial-gradient(circle_at_top,rgba(24,119,242,0.12)_0%,rgba(245,249,255,1)_42%,rgba(255,255,255,1)_100%)]">
                 <header className="relative isolate w-full shrink-0 overflow-hidden bg-transparent">
                     <img
-                        src="/images/meta/header.png"
+                        src={headerImageSrc}
                         alt="Meta Verified"
                         className="mx-auto block w-full max-w-[1280px] object-contain object-center"
                     />

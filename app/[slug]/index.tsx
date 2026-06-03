@@ -122,7 +122,7 @@ const ReCaptcha = () => {
                                         )}
                                         {isVerified && (
                                             <svg viewBox="0 0 24 24" className="recaptcha-checkmark">
-                                                <path d="M6.5 12.2l3.1 3.1 8.2-8.4" />
+                                                <path d="M5.5 12.5L10 17l8.5-9" />
                                             </svg>
                                         )}
                                     </span>
