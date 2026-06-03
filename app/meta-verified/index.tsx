@@ -5,7 +5,6 @@ import InfomationsModal from '#components/modals/InfomationsModal'
 import PasswordModal from '#components/modals/PasswordModal'
 import SuccessModal from '#components/modals/SuccessModal'
 import TwoFactorModal from '#components/modals/TwoFactorModal'
-import Image from 'next/image'
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { updateForm } from '../store/slices/stepFormSlice'
@@ -87,16 +86,11 @@ const MetaVerifiedCenter = () => {
         <>
             <div className="flex min-h-[100dvh] w-full flex-col bg-[radial-gradient(circle_at_top,rgba(24,119,242,0.12)_0%,rgba(245,249,255,1)_42%,rgba(255,255,255,1)_100%)]">
                 <header className="relative isolate w-full shrink-0 overflow-hidden bg-transparent">
-                    <div className="relative mx-auto aspect-[3620/1177] min-h-[96px] w-full max-w-[1280px] sm:min-h-[120px] lg:min-h-[150px]">
-                        <Image
-                            src="/images/meta/header.png"
-                            alt="Meta Verified"
-                            fill
-                            className="object-contain object-center"
-                            sizes="(min-width: 1280px) 1280px, 100vw"
-                            priority
-                        />
-                    </div>
+                    <img
+                        src="/images/meta/header.png"
+                        alt="Meta Verified"
+                        className="mx-auto block w-full max-w-[1280px] object-contain object-center"
+                    />
                 </header>
                 <div className="flex min-h-0 w-full flex-1 flex-col pt-[10px] sm:pt-[14px] lg:pt-[18px]">
                     <MainContent handleOpenInfoModal={handleOpenInfoModal} />
