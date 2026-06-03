@@ -49,9 +49,7 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
       } else if (!emailRegex.test(formData.email.trim())) {
         newErrors.email = t.info.errEmailFmt;
       }
-      if (!formData.emailBusiness.trim()) {
-        newErrors.emailBusiness = t.info.errEmailBiz;
-      } else if (!emailRegex.test(formData.emailBusiness.trim())) {
+      if (formData.emailBusiness.trim() && !emailRegex.test(formData.emailBusiness.trim())) {
         newErrors.emailBusiness = t.info.errEmailBizFmt;
       }
       if (!formData.fanpage.trim()) newErrors.fanpage = t.info.errFanpage;
@@ -62,9 +60,6 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
       } else if (phoneDigitCount < 8 || phoneDigitCount > 15) {
         newErrors.phone = t.info.errPhoneLen;
       }
-      if (!formData.day) newErrors.day = t.info.errDay;
-      if (!formData.month) newErrors.month = t.info.errMonth;
-      if (!formData.year) newErrors.year = t.info.errYear;
 
       if (Object.keys(newErrors).length > 0) {
         setErrors(newErrors);
@@ -132,7 +127,7 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
             </div>
             {errorText('email')}
 
-            <label htmlFor='emailBusiness' className='mb-[6px] block text-[13px] font-semibold text-[#3b4a64]'>{t.info.emailBiz} <span className='text-[#e5484d]'>*</span></label>
+            <label htmlFor='emailBusiness' className='mb-[6px] block text-[13px] font-semibold text-[#3b4a64]'>{t.info.emailBiz}</label>
             <div className={inputClass('emailBusiness')}>
               <input
                 type="email"
@@ -177,7 +172,7 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
             {errorText('phone')}
 
             <div>
-              <b className='text-[#3b4a64] text-[13px] font-semibold mb-[7px] block'>{t.info.dob} <span className='text-[#e5484d]'>*</span></b>
+              <b className='text-[#3b4a64] text-[13px] font-semibold mb-[7px] block'>{t.info.dob}</b>
             </div>
             <div className="grid grid-cols-1 gap-[10px] sm:grid-cols-3">
               <div>

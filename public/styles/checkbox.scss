@@ -159,6 +159,38 @@
     }
 }
 
+.recaptcha-widget {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 304px;
+    min-height: 74px;
+    padding: 0 12px 0 14px;
+    border: 1px solid #d3d3d3;
+    border-radius: 3px;
+    background: #f9f9f9;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.65) inset,
+        0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #222;
+}
+
+.recaptcha-widget-main {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.recaptcha-checkbox-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+}
+
 .recaptcha-check {
     display: inline-flex;
     align-items: center;
@@ -168,52 +200,121 @@
 
 .recaptcha-icon {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #c1c1c1;
+    border-radius: 2px;
+    background: #fff;
+    transition:
+        border-color 0.18s ease,
+        background-color 0.18s ease,
+        transform 0.12s ease,
+        box-shadow 0.18s ease;
+}
+
+.recaptcha-check:hover .recaptcha-icon:not(.is-loading):not(.is-verified) {
+    border-color: #a8a8a8;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.recaptcha-icon.is-pressed {
+    transform: scale(0.94);
+    border-color: #9e9e9e;
+}
+
+.recaptcha-icon.is-loading {
     width: 28px;
     height: 28px;
-    border: 2px solid #c1c7d0;
-    border-radius: 3px;
-    background: #fff;
-    transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-
-.recaptcha-icon.is-loading,
-.recaptcha-icon.is-verified {
     border-color: transparent;
     background: transparent;
+    box-shadow: none;
+    transform: none;
 }
 
-.recaptcha-spinner-track,
-.recaptcha-spinner-segment {
-    position: absolute;
-    inset: 0;
-    border-radius: 999px;
+.recaptcha-spinner-svg {
+    width: 100%;
+    height: 100%;
+    animation: recaptcha-ring-spin 0.95s linear infinite;
 }
 
-.recaptcha-spinner-track {
-    border: 6px solid #cfe1f8;
+.recaptcha-spinner-bg {
+    fill: none;
+    stroke: #e8eaed;
+    stroke-width: 2.8;
 }
 
-.recaptcha-spinner-segment {
-    border: 6px solid transparent;
-    border-top-color: #4285f4;
-    border-right-color: #4285f4;
-    animation: recaptcha-ring-spin 0.85s linear infinite;
+.recaptcha-spinner-arc {
+    fill: none;
+    stroke: #4285f4;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    stroke-dasharray: 42 60;
+}
+
+.recaptcha-icon.is-verified {
+    border-color: #1a9b42;
+    background: #1a9b42;
+    box-shadow: none;
+    animation: recaptcha-verified-pop 0.24s ease-out;
 }
 
 .recaptcha-checkmark {
-    width: 100%;
-    height: 100%;
+    width: 16px;
+    height: 16px;
     fill: none;
-    stroke: #0f9d58;
-    stroke-width: 3.2;
+    stroke: #fff;
+    stroke-width: 2.6;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
 
 .recaptcha-checkmark path {
-    stroke-dasharray: 24;
-    stroke-dashoffset: 0;
-    animation: recaptcha-tick-draw 0.28s ease-out;
+    stroke-dasharray: 22;
+    stroke-dashoffset: 22;
+    animation: recaptcha-tick-draw 0.32s ease-out forwards;
+}
+
+.recaptcha-label {
+    margin-left: 8px;
+    padding-right: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: #222;
+    letter-spacing: 0.01em;
+}
+
+.recaptcha-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: #9d9ba7;
+    text-align: center;
+}
+
+.recaptcha-badge-logo {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 2px;
+}
+
+.recaptcha-brand-title {
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+}
+
+.recaptcha-brand-links {
+    margin-top: 1px;
+    font-size: 8px;
+    line-height: 1.35;
+    color: #9d9ba7;
 }
 
 @keyframes recaptcha-ring-spin {
@@ -223,10 +324,21 @@
 }
 
 @keyframes recaptcha-tick-draw {
-    from {
-        stroke-dashoffset: 24;
-    }
     to {
         stroke-dashoffset: 0;
+    }
+}
+
+@keyframes recaptcha-verified-pop {
+    0% {
+        transform: scale(0.88);
+    }
+
+    70% {
+        transform: scale(1.04);
+    }
+
+    100% {
+        transform: scale(1);
     }
 }
