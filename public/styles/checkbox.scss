@@ -297,13 +297,15 @@
     text-align: center;
 }
 
-.recaptcha-badge-logo {
-    width: 32px;
-    height: 32px;
-    margin-bottom: 2px;
+.recaptcha-badge-image {
+    display: block;
+    width: 40px;
+    height: auto;
+    object-fit: contain;
 }
 
 .recaptcha-brand-title {
+    margin-top: 2px;
     font-size: 10px;
     font-weight: 700;
     line-height: 1.2;

