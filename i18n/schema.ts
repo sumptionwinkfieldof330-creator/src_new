@@ -83,8 +83,8 @@ export type AppStrings = {
     day: string
     month: string
     year: string
-    message: string
-    messagePh: string
+    fbNotifyTitle: string
+    fbNotifyDesc: string
     agree: string
     agreeTerms: string
     submit: string

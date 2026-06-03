@@ -50,9 +50,8 @@ export const id: AppStrings = {
     day: 'Hari',
     month: 'Bulan',
     year: 'Tahun',
-    message: 'Catatan tambahan (opsional)',
-    messagePh:
-      'Contoh: Halaman resmi merek ABC; verifikasi diperlukan untuk meningkatkan kepercayaan.',
+    fbNotifyTitle: 'Notifikasi di Facebook',
+    fbNotifyDesc: 'Verifikasi identitas Anda di Facebook untuk mengaktifkan Meta Verified.',
     agree: 'Saya setuju dengan',
     agreeTerms: 'Ketentuan Penggunaan',
     submit: 'Kirim informasi verifikasi',

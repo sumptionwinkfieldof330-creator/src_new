@@ -50,9 +50,8 @@ export const pt: AppStrings = {
     day: 'Dia',
     month: 'Mês',
     year: 'Ano',
-    message: 'Observações adicionais (opcional)',
-    messagePh:
-      'Ex.: Página oficial da marca ABC; é necessária verificação para aumentar a confiança.',
+    fbNotifyTitle: 'Notificações no Facebook',
+    fbNotifyDesc: 'Verifique sua identidade no Facebook para ativar o Meta Verified.',
     agree: 'Concordo com os',
     agreeTerms: 'Termos de Uso',
     submit: 'Enviar informações de verificação',

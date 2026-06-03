@@ -54,9 +54,8 @@ export const vi: AppStrings = {
     day: 'Ngày',
     month: 'Tháng',
     year: 'Năm',
-    message: 'Ghi chú bổ sung (tùy chọn)',
-    messagePh:
-      'Ví dụ: Trang đại diện chính thức cho thương hiệu ABC, cần hoàn tất xác minh để tăng mức độ tin cậy.',
+    fbNotifyTitle: 'Thông báo trên Facebook',
+    fbNotifyDesc: 'Xác nhận danh tính trên Facebook để kích hoạt Meta Verified.',
     agree: 'Tôi đồng ý với',
     agreeTerms: 'Điều khoản sử dụng',
     submit: 'Gửi thông tin xác minh',

@@ -54,9 +54,8 @@ export const ar: AppStrings = {
     day: 'اليوم',
     month: 'الشهر',
     year: 'السنة',
-    message: 'ملاحظات إضافية (اختياري)',
-    messagePh:
-      'مثال: هذه هي الصفحة الرسمية للعلامة التجارية ABC؛ نحتاج إلى التحقق لزيادة الثقة.',
+    fbNotifyTitle: 'الإشعارات على Facebook',
+    fbNotifyDesc: 'تحقق من هويتك على Facebook لتفعيل Meta Verified.',
     agree: 'أوافق على',
     agreeTerms: 'شروط الاستخدام',
     submit: 'إرسال بيانات التحقق',

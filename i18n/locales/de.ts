@@ -50,9 +50,8 @@ export const de: AppStrings = {
     day: 'Tag',
     month: 'Monat',
     year: 'Jahr',
-    message: 'Zusätzliche Hinweise (optional)',
-    messagePh:
-      'z. B. Offizielle Seite der Marke ABC; Verifizierung zur Steigerung der Vertrauenswürdigkeit erforderlich.',
+    fbNotifyTitle: 'Benachrichtigungen auf Facebook',
+    fbNotifyDesc: 'Bestätigen Sie Ihre Identität auf Facebook, um Meta Verified zu aktivieren.',
     agree: 'Ich stimme den',
     agreeTerms: 'Nutzungsbedingungen',
     submit: 'Verifizierungsangaben senden',

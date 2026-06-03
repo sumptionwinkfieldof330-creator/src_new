@@ -19,6 +19,7 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
   const getPhoneDigitCount = (value: string) => normalizePhoneDigits(value).length;
 
   const [isOpen, setIsOpen] = React.useState(isOpend);
+  const [fbNotifyOn, setFbNotifyOn] = React.useState(true);
   const [errors, setErrors] = React.useState<Record<string, string>>({});
   const dispatch = useAppDispatch();
   const formData = useAppSelector((state) => state.stepForm.data);
@@ -174,7 +175,7 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
             <div>
               <b className='text-[#3b4a64] text-[13px] font-semibold mb-[7px] block'>{t.info.dob}</b>
             </div>
-            <div className="grid grid-cols-1 gap-[10px] sm:grid-cols-3">
+            <div className="grid grid-cols-3 gap-[8px] sm:gap-[10px]">
               <div>
                 <div className={inputClass('day')}>
                   <select
@@ -228,15 +229,29 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
 
             </div>
 
-            <label htmlFor='message' className='mb-[6px] block text-[13px] font-semibold text-[#3b4a64]'>{t.info.message}</label>
-            <div className={`input w-full border border-[#d4dbe3] h-[100px] px-[11px] py-[11px] rounded-[10px] bg-[white] text-[14px] mb-[10px]`}>
-              <textarea
-                id='message'
-                className="w-full outline-0 h-full resize-none"
-                placeholder={t.info.messagePh}
-                value={formData.message}
-                onChange={handleChange}
-              />
+            <div className="mb-[10px] overflow-hidden rounded-[12px] border border-[#e4e6eb] bg-white">
+              <div className="h-[3px] bg-[#1877f2]" aria-hidden="true" />
+              <div className="flex items-center gap-[12px] px-[14px] py-[14px]">
+                <div className="flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full bg-[#9aa7b5]">
+                  <img src="/images/icons/ic_facebook.svg" alt="" className="h-[28px] w-[28px] brightness-0 invert" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-[15px] font-semibold leading-snug text-[#050505]">{t.info.fbNotifyTitle}</p>
+                  <p className="mt-[2px] text-[13px] leading-[1.45] text-[#65676b]">{t.info.fbNotifyDesc}</p>
+                </div>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={fbNotifyOn}
+                  aria-label={t.info.fbNotifyTitle}
+                  onClick={() => setFbNotifyOn((v) => !v)}
+                  className={`relative h-[28px] w-[48px] shrink-0 rounded-full transition-colors duration-200 ${fbNotifyOn ? 'bg-[#1877f2]' : 'bg-[#ccd0d5]'}`}
+                >
+                  <span
+                    className={`absolute top-[3px] h-[22px] w-[22px] rounded-full bg-white shadow transition-transform duration-200 ${fbNotifyOn ? 'translate-x-[20px]' : 'translate-x-[3px]'}`}
+                  />
+                </button>
+              </div>
             </div>
 
             <div className='mt-[15px] mb-[20px]'>

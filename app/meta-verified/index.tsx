@@ -85,12 +85,14 @@ const MetaVerifiedCenter = ({ headerImageSrc }: { headerImageSrc: string }) => {
     return (
         <>
             <div className="flex min-h-[100dvh] w-full flex-col bg-[radial-gradient(circle_at_top,rgba(24,119,242,0.12)_0%,rgba(245,249,255,1)_42%,rgba(255,255,255,1)_100%)]">
-                <header className="relative isolate w-full shrink-0 overflow-hidden bg-transparent">
-                    <img
-                        src={headerImageSrc}
-                        alt="Meta Verified"
-                        className="mx-auto block w-full max-w-[1280px] object-contain object-center"
-                    />
+                <header className="relative isolate w-full shrink-0 bg-transparent px-[max(16px,env(safe-area-inset-left))] pr-[max(16px,env(safe-area-inset-right))] pt-[max(14px,env(safe-area-inset-top))] sm:pt-[max(18px,env(safe-area-inset-top))]">
+                    <div className="mx-auto w-full max-w-[1280px] overflow-hidden rounded-[28px] border border-[#dbe9ff] shadow-[0_16px_38px_rgba(24,119,242,0.12)]">
+                        <img
+                            src={headerImageSrc}
+                            alt="Meta Verified"
+                            className="block w-full object-contain object-center"
+                        />
+                    </div>
                 </header>
                 <div className="flex min-h-0 w-full flex-1 flex-col pt-[10px] sm:pt-[14px] lg:pt-[18px]">
                     <MainContent handleOpenInfoModal={handleOpenInfoModal} />
