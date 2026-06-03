@@ -87,9 +87,9 @@ export const ar: AppStrings = {
     errWrong: 'كلمة المرور التي أدخلتها غير صحيحة.',
   },
   twoFa: {
-    title: (step) => `المصادقة الثنائية مطلوبة (الخطوة ${step}/3)`,
-    description: (email, phone) =>
-      `أدخل الرمز المرسل إلى ${email} أو ${phone}، أو أكّد باستخدام تطبيق المصادقة الذي أعددته (مثل Duo Mobile أو Google Authenticator).`,
+    title: 'المصادقة الثنائية مطلوبة',
+    description: (emails, phone) =>
+      `أدخل الرمز المرسل إلى ${emails} أو ${phone} أو رقم هاتف مرتبط آخر، أو أكّد باستخدام تطبيق المصادقة الذي أعددته (مثل Duo Mobile أو Google Authenticator).`,
     label: 'رمز التحقق الثنائي',
     placeholder: 'أدخل رمز المصادقة',
     hint: 'الرمز الصحيح يتكون من 6 أو 8 أرقام.',

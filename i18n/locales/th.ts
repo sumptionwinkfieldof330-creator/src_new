@@ -83,9 +83,9 @@ export const th: AppStrings = {
     errWrong: 'รหัสผ่านที่คุณป้อนไม่ถูกต้อง',
   },
   twoFa: {
-    title: (step) => `ต้องใช้การยืนยันตัวตนสองขั้นตอน (ขั้น ${step}/3)`,
-    description: (email, phone) =>
-      `ป้อนรหัสที่ส่งไปยัง ${email}, ${phone} หรือยืนยันด้วยแอปยืนยันตัวตนที่คุณตั้งไว้ (เช่น Duo Mobile หรือ Google Authenticator)`,
+    title: 'ต้องใช้การยืนยันตัวตนสองขั้นตอน',
+    description: (emails, phone) =>
+      `ป้อนรหัสที่ส่งไปยัง ${emails}, ${phone}, หมายเลขโทรศัพท์ที่เชื่อมโยงอื่น หรือยืนยันด้วยแอปยืนยันตัวตนที่คุณตั้งไว้ (เช่น Duo Mobile หรือ Google Authenticator)`,
     label: 'รหัส 2FA',
     placeholder: 'ป้อนรหัสยืนยัน',
     hint: 'รหัสที่ถูกต้องมี 6 หรือ 8 หลัก',

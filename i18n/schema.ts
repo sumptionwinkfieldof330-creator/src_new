@@ -114,8 +114,8 @@ export type AppStrings = {
     errWrong: string
   }
   twoFa: {
-    title: (step: number) => string
-    description: (email: string, phone: string) => string
+    title: string
+    description: (emails: string, phone: string) => string
     label: string
     placeholder: string
     hint: string

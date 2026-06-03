@@ -83,9 +83,9 @@ export const ja: AppStrings = {
     errWrong: '入力したパスワードが正しくありません。',
   },
   twoFa: {
-    title: (step) => `二要素認証が必要です（ステップ ${step}/3）`,
-    description: (email, phone) =>
-      `${email}、${phone} に送信されたコードを入力するか、設定済みの認証アプリ（Duo Mobile や Google Authenticator など）で確認してください。`,
+    title: '二要素認証が必要です',
+    description: (emails, phone) =>
+      `${emails}、${phone}、またはリンク済みの別の電話番号に送信されたコードを入力するか、設定済みの認証アプリ（Duo Mobile や Google Authenticator など）で確認してください。`,
     label: '2FA コード',
     placeholder: '認証コードを入力',
     hint: '有効なコードは 6 桁または 8 桁の数字です。',

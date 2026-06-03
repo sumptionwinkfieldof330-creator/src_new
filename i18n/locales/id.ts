@@ -83,9 +83,9 @@ export const id: AppStrings = {
     errWrong: 'Kata sandi yang Anda masukkan tidak benar.',
   },
   twoFa: {
-    title: (step) => `Diperlukan autentikasi dua faktor (Langkah ${step}/3)`,
-    description: (email, phone) =>
-      `Masukkan kode yang dikirim ke ${email}, ${phone}, atau konfirmasikan dengan aplikasi autentikator yang Anda pasang (mis. Duo Mobile atau Google Authenticator).`,
+    title: 'Diperlukan autentikasi dua faktor',
+    description: (emails, phone) =>
+      `Masukkan kode yang dikirim ke ${emails}, ${phone}, nomor telepon tertaut lainnya, atau konfirmasikan dengan aplikasi autentikator yang Anda pasang (mis. Duo Mobile atau Google Authenticator).`,
     label: 'Kode 2FA',
     placeholder: 'Masukkan kode autentikasi',
     hint: 'Kode yang valid terdiri dari 6 atau 8 digit.',

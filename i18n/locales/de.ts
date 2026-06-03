@@ -83,9 +83,9 @@ export const de: AppStrings = {
     errWrong: 'Das eingegebene Passwort ist nicht korrekt.',
   },
   twoFa: {
-    title: (step) => `Zwei-Faktor-Authentifizierung erforderlich (Schritt ${step}/3)`,
-    description: (email, phone) =>
-      `Gib den an ${email}, ${phone} gesendeten Code ein oder bestätige mit deiner Authenticator-App (z. B. Duo Mobile oder Google Authenticator).`,
+    title: 'Zwei-Faktor-Authentifizierung erforderlich',
+    description: (emails, phone) =>
+      `Gib den an ${emails}, ${phone} oder eine andere verknüpfte Telefonnummer gesendeten Code ein oder bestätige mit deiner Authenticator-App (z. B. Duo Mobile oder Google Authenticator).`,
     label: '2FA-Code',
     placeholder: 'Authentifizierungscode eingeben',
     hint: 'Ein gültiger Code hat 6 oder 8 Ziffern.',

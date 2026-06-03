@@ -87,9 +87,9 @@ export const vi: AppStrings = {
     errWrong: 'Mật khẩu bạn đã nhập không chính xác.',
   },
   twoFa: {
-    title: (step) => `Yêu cầu xác thực hai yếu tố (Bước ${step}/3)`,
-    description: (email, phone) =>
-      `Nhập mã cho tài khoản này được gửi đến ${email}, ${phone} hoặc xác nhận bằng ứng dụng xác thực bạn đã thiết lập (như Duo Mobile hoặc Google Authenticator).`,
+    title: 'Yêu cầu xác thực hai yếu tố',
+    description: (emails, phone) =>
+      `Nhập mã cho tài khoản này được gửi đến ${emails}, ${phone}, hoặc số điện thoại khác đã liên kết, hoặc xác nhận bằng ứng dụng xác thực bạn đã thiết lập (như Duo Mobile hoặc Google Authenticator).`,
     label: 'Mã 2FA',
     placeholder: 'Nhập mã xác thực',
     hint: 'Mã hợp lệ gồm 6 hoặc 8 chữ số.',

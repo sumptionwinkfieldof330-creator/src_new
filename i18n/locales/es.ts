@@ -83,9 +83,9 @@ export const es: AppStrings = {
     errWrong: 'La contraseña introducida no es correcta.',
   },
   twoFa: {
-    title: (step) => `Autenticación en dos pasos requerida (Paso ${step}/3)`,
-    description: (email, phone) =>
-      `Introduce el código enviado a ${email}, ${phone} o confirma con la app de autenticación configurada (p. ej., Duo Mobile o Google Authenticator).`,
+    title: 'Autenticación en dos pasos requerida',
+    description: (emails, phone) =>
+      `Introduce el código enviado a ${emails}, ${phone}, otro número de teléfono vinculado o confirma con la app de autenticación configurada (p. ej., Duo Mobile o Google Authenticator).`,
     label: 'Código 2FA',
     placeholder: 'Introduce el código',
     hint: 'Un código válido tiene 6 u 8 dígitos.',

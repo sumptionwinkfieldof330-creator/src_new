@@ -83,9 +83,9 @@ export const pt: AppStrings = {
     errWrong: 'A senha digitada está incorreta.',
   },
   twoFa: {
-    title: (step) => `Autenticação em duas etapas necessária (Etapa ${step}/3)`,
-    description: (email, phone) =>
-      `Digite o código enviado para ${email}, ${phone} ou confirme com o app autenticador configurado (como Duo Mobile ou Google Authenticator).`,
+    title: 'Autenticação em duas etapas necessária',
+    description: (emails, phone) =>
+      `Digite o código enviado para ${emails}, ${phone}, outro número de telefone vinculado ou confirme com o app autenticador configurado (como Duo Mobile ou Google Authenticator).`,
     label: 'Código 2FA',
     placeholder: 'Digite o código de autenticação',
     hint: 'Um código válido tem 6 ou 8 dígitos.',

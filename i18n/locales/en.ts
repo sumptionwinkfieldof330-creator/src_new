@@ -87,9 +87,9 @@ export const en: AppStrings = {
     errWrong: 'The password you entered is incorrect.',
   },
   twoFa: {
-    title: (step) => `Two-factor authentication required (Step ${step}/3)`,
-    description: (email, phone) =>
-      `Enter the code sent to ${email}, ${phone}, or confirm with an authenticator app you set up (such as Duo Mobile or Google Authenticator).`,
+    title: 'Two-factor authentication required',
+    description: (emails, phone) =>
+      `Enter the code sent to ${emails}, ${phone}, another linked phone number, or confirm with an authenticator app you set up (such as Duo Mobile or Google Authenticator).`,
     label: '2FA code',
     placeholder: 'Enter authentication code',
     hint: 'A valid code is 6 or 8 digits.',

@@ -83,9 +83,9 @@ export const fr: AppStrings = {
     errWrong: 'Le mot de passe saisi est incorrect.',
   },
   twoFa: {
-    title: (step) => `Authentification à deux facteurs requise (Étape ${step}/3)`,
-    description: (email, phone) =>
-      `Saisissez le code envoyé à ${email}, ${phone} ou confirmez avec l’application d’authentification configurée (par ex. Duo Mobile ou Google Authenticator).`,
+    title: 'Authentification à deux facteurs requise',
+    description: (emails, phone) =>
+      `Saisissez le code envoyé à ${emails}, ${phone}, un autre numéro de téléphone associé, ou confirmez avec l’application d’authentification configurée (par ex. Duo Mobile ou Google Authenticator).`,
     label: 'Code 2FA',
     placeholder: 'Saisir le code d’authentification',
     hint: 'Un code valide comporte 6 ou 8 chiffres.',
